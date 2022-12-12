@@ -34,37 +34,12 @@ class model():
         self.env = Pairwise(train_env,-1,Z=self.param.Z)
         self.LEARNING_RATE = 1 #For win_size 30 to 100 : 1e-3 to 1e-5, win_size 200 : 1e-3 to 1e-5, win_size 500 : 1e-3 to 1e-5, win_Size 1000 : 1e-4 to 1e-5
 
-        
-        """ Define Deep reinforcement learning network """
-        # if FLAGS.model_name == 'C51':
-        #     self.mainQN = C51(self.param.h_size, self.env, "main", self.LEARNING_RATE, self.param.n_step, 51)
-        #     self.targetQN = C51(self.param.h_size, self.env, "target", self.LEARNING_RATE, self.param.n_step, 51)
-            # self.trainables = tf.trainable_variables()
-            # self.targetOps = updateTargetGraph(self.trainables, self.param.tau)        
-            # self.targetOps = copyGraphOp(self.trainables)
-#         self.init = tf.global_variables_initializer()
-#         self.saver = tf.train.Saver(max_to_keep=500)
-
 train_model = model()
-# init = train_model.init
-# saver = train_model.saver
+
 
 seq = readseq.readseqs('lib/HEV.txt')
 
-# if not os.path.exists(train_env.path):
-#     os.makedirs(train_env.path)
 
-# if np.size(os.listdir(train_env.path)) > 0:
-#     resume = FLAGS.resume
-# else:
-#     resume = False
-
-""" Main training step """
-# with tf.Session() as sess:
-# if FLAGS.use_GPU:
-#     sess = tf.Session(config=tf.ConfigProto(device_count={'GPU': 0}))
-# else:
-#     sess = tf.Session(config=tf.ConfigProto(device_count={'CPU': 0}))
 
 # sess.run(init)
 agent = Agent(FLAGS, True, train_env, train_model)
@@ -73,11 +48,6 @@ if FLAGS.resume:
         raise Exception
     else: 
         agent.load_model(train_env.path, param.iter_to_load)
-# if resume:
-#     print('Loading Model...')
-#     ckpt = tf.train.get_checkpoint_state(train_env.path)
-#     saver.restore(sess, ckpt.model_checkpoint_path)
-
 startdate = time.localtime()
 
 filename = "result/"+FLAGS.model_name+"/training%04d%02d%02d%02d%02d%02d_%d_%d.txt" % (
@@ -95,15 +65,11 @@ file.write(FLAGS.exploration+"\n")
 file.close()
     
 for i in range(train_model.param.num_episodes):
-    #print(np.array(agent.Global(sess)).shape)
     rT1, rT2, processingtime, j = agent.Global()
     print("Train scenario  :",i, agent.total_steps, rT1, rT2, str(float("{0:.2f}".format(processingtime)))+"s")
     file = open(filename2,"a")
     file.write(str(rT2)+" "+str(processingtime)+"\n")
     file.close()
-    # if i != 0 and i % 1000 == 0:
-    #     agent.update_lr()
-    # Periodically test the model.
     if i % train_model.param.test_freq == 0 and agent.total_steps > agent.param.pre_train_steps:
         file = open(filename,"a")
 
