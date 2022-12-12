@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this codebase, plase cite it as below"
+authors:
+- family-names: "Kimiavi"
+  given-names: "Alexander"
+title: "Improvements to DQNAlign"
+version: 1.0.0
+date-released: 2022-12-12
+url: "https://github.com/alex-kimiavi/Deep-Reinforcement-Learning-For-DNA-Sequence-Alignment"
