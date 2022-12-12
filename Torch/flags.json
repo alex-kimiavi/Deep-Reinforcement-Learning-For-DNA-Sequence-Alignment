@@ -1,0 +1,14 @@
+{
+    "game": "Pairwise", 
+    "model_name": "C51", 
+    "network_set": "C51", 
+    "exploration": "e-greedy", 
+    "strategy": "test_pair", 
+    "resume": true, 
+    "show_training": false, 
+    "show_align": false, 
+    "print_align": false, 
+    "display_process": true, 
+    "use_GPU": true, 
+    "test_identity": true
+}

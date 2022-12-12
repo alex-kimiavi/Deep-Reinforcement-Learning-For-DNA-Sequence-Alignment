@@ -1,0 +1,19 @@
+{
+    "batch_size": 32, 
+    "update_freq": 4, 
+    "test_freq": 10, 
+    "save_freq": 10,
+    "iter_to_load": 4010, 
+    "y": 0.99, 
+    "startE": 1.0, 
+    "endE": 0.05, 
+    "annealing_steps": 60000, 
+    "num_episodes": 10000, 
+    "pre_train_steps": 50000, 
+    "load_model": true, 
+    "h_size": 256, 
+    "tau": 0.001, 
+    "n_action": 3, 
+    "n_step": 1, 
+    "Z": 2
+}
