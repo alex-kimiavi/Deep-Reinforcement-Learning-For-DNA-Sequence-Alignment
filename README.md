@@ -4,7 +4,7 @@ This code-base is built heavily upon the following repository https://github.com
 
 There are three versions of the codebase, one using Tensorflow 1.12 and one using PyTorch 1.13 and one using Pytorch 1.13 but includes an implementation with Noisy Layers. The TensorFlow version is in the TF folder and the PyTorch version is in the Torch folder. 
 
-It is highly reccomended to use the torch version as it is a newer library and is compatible with newer versions of Python
+It is highly reccomended to use the torch version as it is more recent than TensorFlow 1.12 and is compatible with newer versions of Python
 
 # Requirements
 Works best on a linux environment with nucmer installed
